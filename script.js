@@ -79,7 +79,9 @@ function loadImages() {
                 
                 const figure = document.createElement('figure');
                 const img = document.createElement('img');
-                img.src = imagePath;
+                // Extract just the filename from the path and use relative path
+                const filename = imagePath.split('/').pop();
+                img.src = `images/${filename}`;
                 
                 const figcaption = document.createElement('figcaption');
                 figcaption.textContent = getUniqueQuote();

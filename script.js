@@ -53,48 +53,57 @@ function loadImages() {
         "A friend is one of the best things you can be and the greatest things you can have."
     ];
 
+    const imageFiles = [
+        "1f864235-6826-49a7-b34e-f3e81e676338.JPG",
+        "3233c5a3-7a64-43e4-8f44-dadcb32aa56e.JPG",
+        "32e4a742-d4c5-4357-a29b-06445c05043b.JPG",
+        "3330dd02-dd5b-4f0f-b264-b17823bf0046.JPG",
+        "45181d0d-c995-41f9-a38b-1badeda00158.JPG",
+        "50d9083c-1cce-44bb-87c9-0ba4c0e4f0e0.JPG",
+        "55f2e8c9-e4ad-41a1-a4be-15a8f0d63590.JPG",
+        "590fbb35-563a-438b-9de1-84ad16cf97a2.JPG",
+        "6514efc6-4ad0-40fb-8442-13085a65b45a.JPG",
+        "73edfcc9-3d73-4571-b52b-a9092c0431a7.JPG",
+        "7557c462-1ba9-4faf-ae0f-9dd0098ddb42.JPG",
+        "7718cc07-126c-4ade-a363-b8b58961a39a.JPG",
+        "a0d793b6-3f2b-4080-b6ec-02bacd2194ef.JPG",
+        "ae9cafea-9068-4d61-91d0-1a5e697d06a0.JPG",
+        "af83327b-4796-425c-8165-be0c4881c39e.JPG",
+        "b781186f-5bd8-499d-92d1-5e8088bd8538.JPG",
+        "ba0f77b3-dcec-47a5-b1e6-50d330afb929.JPG",
+        "fcb04008-f594-4650-a79e-2b19ebe5019f.JPG"
+    ];
+
     let availableQuotes = [...quotes];
 
     function getUniqueQuote() {
         if (availableQuotes.length === 0) {
-            availableQuotes = [...quotes]; 
+            availableQuotes = [...quotes];
         }
         const randomIndex = Math.floor(Math.random() * availableQuotes.length);
         return availableQuotes.splice(randomIndex, 1)[0];
     }
 
-    fetch('images')
-        .then(response => response.text())
-        .then(text => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(text, 'text/html');
-            const imageFiles = Array.from(doc.querySelectorAll('a'))
-                .map(a => a.href)
-                .filter(href => href.match(/\.(jpg|jpeg|png|gif)$/i));
-
-            const gallery = document.getElementById('gallery');
-            imageFiles.forEach(imagePath => {
-                const container = document.createElement('div');
-                container.className = 'image-container';
-                
-                const figure = document.createElement('figure');
-                const img = document.createElement('img');
-                // Extract just the filename from the path and use relative path
-                const filename = imagePath.split('/').pop();
-                img.src = `images/${filename}`;
-                
-                const figcaption = document.createElement('figcaption');
-                figcaption.textContent = getUniqueQuote();
-                
-                figure.appendChild(img);
-                figure.appendChild(figcaption);
-                container.appendChild(figure);
-                gallery.appendChild(container);
-            });
-            
-            // Initial frame colors
-            updateFrameStripes();
-        });
+    const gallery = document.getElementById('gallery');
+    imageFiles.forEach(filename => {
+        const container = document.createElement('div');
+        container.className = 'image-container';
+        
+        const figure = document.createElement('figure');
+        const img = document.createElement('img');
+        img.src = `images/${filename}`;
+        
+        const figcaption = document.createElement('figcaption');
+        figcaption.textContent = getUniqueQuote();
+        
+        figure.appendChild(img);
+        figure.appendChild(figcaption);
+        container.appendChild(figure);
+        gallery.appendChild(container);
+    });
+    
+    // Initial frame colors
+    updateFrameStripes();
 }
 
 // Music Player

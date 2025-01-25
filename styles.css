@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap');
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    background: repeating-linear-gradient(
+        0deg,
+        var(--color1) 0vh,
+        var(--color1) 10vh,
+        var(--color2) 10vh,
+        var(--color2) 20vh
+    );
+    background-size: 100% 20vh;
+    transition: background 2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Comic Sans MS', cursive;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 3em;
+    margin-bottom: 40px;
+}
+
+.postcard {
+    background: #fff;
+    width: 80%;
+    max-width: 600px;
+    height: 400px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    padding: 20px;
+    position: relative;
+    transform: rotate(-2deg);
+}
+
+.postcard-content {
+    height: 100%;
+    padding: 20px;
+    position: relative;
+}
+
+.stamp-area {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 40px;
+}
+
+.writing-area {
+    font-family: 'Comic Sans', cursive;
+    font-size: 24px;
+    line-height: 1.6;
+    color: #2c3e50;
+    height: 80%;
+    overflow-y: auto;
+    padding: 20px;
+    outline: none;
+}
+
+.writing-area:focus {
+    outline: none;
+}
+
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.image-container {
+    position: relative;
+    padding: 15px;
+    background: repeating-linear-gradient(
+        0deg,
+        var(--frame-color1) 0px,
+        var(--frame-color1) 10px,
+        var(--frame-color2) 10px,
+        var(--frame-color2) 20px
+    );
+    border-radius: 10px;
+    max-width: 300px;
+    transition: background 2s ease;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    display: block;
+}
+
+figcaption {
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.music-player {
+    background: white;
+    width: 300px;
+    padding: 4px;
+    border-radius: 20px;
+    margin: 20px auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.music-player::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--color1) 0px,
+        var(--color1) 10px,
+        var(--color2) 10px,
+        var(--color2) 20px
+    );
+    opacity: 0.1;
+    transition: background 2s ease;
+}
+
+.player-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 16px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Comic Sans MS', cursive;
+    color: #333;
+}
+
+.song-info i {
+    color: var(--color1);
+    transition: color 2s ease;
+}
+
+.play-button {
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, var(--color1), var(--color2));
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.play-button:hover {
+    transform: scale(1.1);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: #eee;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--color1), var(--color2));
+    transition: width 0.1s linear;
+}
